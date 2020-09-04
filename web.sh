@@ -111,7 +111,7 @@ v2ray_ui(){
 
 bbr_sh(){
     $systemPackage install -y wget
-    wget -N --no-check-certificate -q -O tcp.sh "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && bash tcp.sh
+    wget -N --no-check-certificate -q -O tcp.sh "https://raw.githubusercontent.com/qlmuby/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && bash tcp.sh
 }
 
 rm_docker(){
