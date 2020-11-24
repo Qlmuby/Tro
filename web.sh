@@ -109,7 +109,12 @@ v2ray_ui(){
 		bash <(curl -Ls https://blog.sprov.xyz/v2-ui.sh)
 }
 
-bbr_sh(){
+bbr_1.0(){
+    $systemPackage install -y wget
+    wget -N --no-check-certificate -q -O tcp.sh "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && bash tcp.sh
+}
+
+bbr_2.0(){
     $systemPackage install -y wget
     wget -N "https://github.000060000.xyz/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 }
@@ -128,32 +133,36 @@ start_menu(){
 	green "=========================================================="
 	  red " 温馨提示：推荐使用Debian Ubuntu系统"
 	green "=========================================================="
-	 blue " 1. 脚本安装 BBRPlus 加速"
-     blue " 2. 宿主机部署 Web 伪装站点"
-     blue " 3. 宿主机安装 V2-UI 管理面板"
-     blue " 4. 一键进入Trojan Docker容器"
-     blue " 5. 一键安装Docker版Trojan-Web"
-     blue " 6. 一键卸载所有Docker容器和镜像"
+	 blue " 1. 脚本安装 BBRPlus 加速（旧版）"
+     blue " 2. 脚本安装 BBRPlus 加速（新版）"
+     blue " 3. 宿主机部署 Web 伪装站点"
+     blue " 4. 宿主机安装 V2-UI 管理面板"
+     blue " 5. 一键进入Trojan Docker容器"
+     blue " 6. 一键安装Docker版Trojan-Web"
+     blue " 7. 一键卸载所有Docker容器和镜像"
      blue " 0. 退出脚本"
     echo
     read -p "请输入数字:" num
     case "$num" in
     1)
-		bbr_sh
+		bbr_1.0
 		;;
 		2)
-		web_deploy
+		bbr_2.0
 		;;
 		3)
-		v2ray_ui
+		web_deploy
 		;;
 		4)
-		into_docker
+		v2ray_ui
 		;;
 		5)
-		docker_install
+		into_docker
 		;;
 		6)
+		docker_install
+		;;
+		7)
 		rm_docker
 		;;
 		0)
